@@ -92,11 +92,9 @@ class PuzzleSolver:
         wordResult = ''
         for i in range(len(self.wordCheck)):
             try:
-                if colCount < 0:
-                    break
-                else:
-                    wordResult += self.puzzle[rowCount][colCount]
-                    colCount -= 1
+                self.raiseErrorIfNegative(colCount)
+                wordResult += self.puzzle[rowCount][colCount]
+                colCount -= 1
             except IndexError:
                 wordResult = ''
                 break
@@ -127,11 +125,9 @@ class PuzzleSolver:
         wordResult = ''
         for i in range(len(self.wordCheck)):
             try:
-                if rowCount < 0:
-                    break
-                else:
-                    wordResult += self.puzzle[rowCount][colCount]
-                    rowCount -= 1
+                self.raiseErrorIfNegative(rowCount)
+                wordResult += self.puzzle[rowCount][colCount]
+                rowCount -= 1
             except IndexError:
                 wordResult = ''
                 break
@@ -163,12 +159,10 @@ class PuzzleSolver:
         wordResult = ''
         for i in range(len(self.wordCheck)):
             try:
-                if colCount < 0:
-                    break
-                else:
-                    wordResult += self.puzzle[rowCount][colCount]
-                    rowCount += 1
-                    colCount -= 1
+                self.raiseErrorIfNegative(colCount)
+                wordResult += self.puzzle[rowCount][colCount]
+                rowCount += 1
+                colCount -= 1
             except IndexError:
                 wordResult = ''
                 break
@@ -183,12 +177,10 @@ class PuzzleSolver:
         wordResult = ''
         for i in range(len(self.wordCheck)):
             try:
-                if rowCount < 0:
-                    break
-                else:
-                    wordResult += self.puzzle[rowCount][colCount]
-                    rowCount -= 1
-                    colCount += 1
+                self.raiseErrorIfNegative(rowCount)
+                wordResult += self.puzzle[rowCount][colCount]
+                rowCount -= 1
+                colCount += 1
             except IndexError:
                 wordResult = ''
                 break
@@ -203,12 +195,10 @@ class PuzzleSolver:
         wordResult = ''
         for i in range(len(self.wordCheck)):
             try:
-                if rowCount < 0 or colCount < 0:
-                    break
-                else:
-                    wordResult += self.puzzle[rowCount][colCount]
-                    rowCount -= 1
-                    colCount -= 1
+                self.raiseErrorIfNegative(rowCount, colCount)
+                wordResult += self.puzzle[rowCount][colCount]
+                rowCount -= 1
+                colCount -= 1
             except IndexError:
                 wordResult = ''
                 break
@@ -216,3 +206,7 @@ class PuzzleSolver:
             return [startRowCount + 1, startColCount + 1, 'tl']
         else:
             return None
+
+    def raiseErrorIfNegative(self, indexOne, indexTwo = 0):
+        if indexOne < 0 or indexTwo < 0:
+            raise IndexError
