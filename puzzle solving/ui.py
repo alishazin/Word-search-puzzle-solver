@@ -20,6 +20,7 @@ while True:
     if wordToSearch == '':
         break
     else:
-        print(obj.solvePuzzle(wordToSearch))
+        for rowOut, colOut, directionDetails in (obj.solvePuzzle(wordToSearch)):
+            print(f'Row {rowOut}, Column {colOut}, Towards {obj.shortDetails[directionDetails]}')
 
 print("Search Ended...")

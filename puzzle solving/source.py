@@ -17,6 +17,18 @@
 # "tl" = top left
 
 class PuzzleSolver:
+
+    shortDetails = {
+        'r': 'Right',
+        'l': 'Left',
+        'b': 'Bottom',
+        't': 'Top',
+        'br': 'Bottom Right',
+        'bl': 'Bottom Left',
+        'tr': 'Top Right',
+        'tl': 'Top Left'
+    }
+
     def __init__(self, puzzle):
         self.puzzle = puzzle
         self.rowLimit = len(puzzle)
